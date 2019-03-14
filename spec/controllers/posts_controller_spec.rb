@@ -8,6 +8,15 @@ RSpec.describe PostsController do
       category: "Non-Fiction"
     }
   end
+  let(:updated_attributes) do
+    {
+      params: {
+        title: "The Dangers of Stairs",
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus, nulla vel condimentum ornare, arcu lorem hendrerit purus, ac sagittis ipsum nisl nec erat. Morbi porta sollicitudin leo, eu cursus libero posuere ac. Sed ac ultricies ante. Donec nec nulla ipsum. Nunc eleifend, ligula ut volutpat.",
+        category: "Non-Fiction"
+      }
+    }
+  end
   let(:article_found) { Post.find(@article.id) }
 
   before do
@@ -16,7 +25,7 @@ RSpec.describe PostsController do
 
   describe "showing a post" do
     it "shows a post" do
-      get :show, id: @article.id
+      get :show, {params: {id: @article.id}}
       expect(article_found).to eq(@article)
     end
   end
@@ -30,13 +39,23 @@ RSpec.describe PostsController do
       )
     end
 
+    let(:updated_new_attributes) do
+      updated_attributes.merge(
+        params: {
+          id: @article.id,
+          title: "Fifteen Ways to Transcend Corporeal Form",
+          category: "Fiction"
+        }
+      )
+    end
+
     it "updates successfully" do
       @article.update(new_attributes)
       expect(article_found.title).to eq(new_attributes[:title])
     end
 
     it "redirects to show page" do
-      patch :update, new_attributes
+      patch :update, updated_new_attributes
       expect(response).to redirect_to(post_path(@article))
     end
   end
@@ -48,6 +67,17 @@ RSpec.describe PostsController do
         title: nil,
         content: "too short",
         category: "Speculative Fiction"
+      }
+    end
+
+    let(:updated_bad_attributes) do
+      {
+        params: {
+          id: @article.id,
+          title: nil,
+          content: "too short",
+          category: "Speculative Fiction"
+        }
       }
     end
 
@@ -66,7 +96,7 @@ RSpec.describe PostsController do
     end
 
     describe "controller actions" do
-      before { patch :update, bad_attributes }
+      before { patch :update, updated_bad_attributes }
 
       it "does not update" do
         expect(article_found.content).to_not eq("too short")
@@ -79,4 +109,3 @@ RSpec.describe PostsController do
   end
 
 end
-
