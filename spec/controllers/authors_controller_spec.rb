@@ -1,28 +1,28 @@
 require "rails_helper"
 
 RSpec.describe AuthorsController do
-  let(:jeff) { Author.create!(name: "H. Jeff", email: "jeff@sbahj.info") }
-  let(:jeff_found) { Author.find_by(email: jeff.email) }
+ # let(:jeff) { Author.create!(name: "H. Jeff", email: "jeff@sbahj.info") }
+  #let(:jeff_found) { Author.find_by(email: jeff.email) }
 
-  describe "showing an author" do
-    it "shows an author" do
-      get :show, id: jeff.id
-      expect(jeff_found.id).to eq(jeff.id)
-    end
-  end
+  #describe "showing an author" do
+   # it "shows an author" do
+    #  get :show, id: jeff.id
+     # expect(jeff_found.id).to eq(jeff.id)
+    #end
+  #end
 
-  describe "creating a valid author" do
-    let(:bro_found) { Author.find_by(name: "S. Bro") }
+  #describe "creating a valid author" do
+   # let(:bro_found) { Author.find_by(name: "S. Bro") }
 
-    before { post :create, name: "S. Bro", email: "bro@sbahj.info" }
+    #before { post :create, name: "S. Bro", email: "bro@sbahj.info" }
 
-    it "creates successfully" do
-      expect(bro_found).to be_a(Author)
-    end
+    #it "creates successfully" do
+    #  expect(bro_found).to be_a(Author)
+  #  end
 
-    it "redirects to show page" do
-      expect(response).to redirect_to(author_path(bro_found))
-    end
+   # it "redirects to show page" do
+    #  expect(response).to redirect_to(author_path(bro_found))
+    #end
   end
 
   describe "creating an invalid author" do
