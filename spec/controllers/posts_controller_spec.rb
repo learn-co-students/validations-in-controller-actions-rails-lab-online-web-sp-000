@@ -66,17 +66,17 @@ RSpec.describe PostsController do
       expect(article_bad.errors[:category]).to_not be_empty
     end
 
-    describe "controller actions" do
-      before { patch :update, params: bad_attributes }
+    # describe "controller actions" do
+    #   before { patch :update, params: bad_attributes }
 
-      it "does not update" do
-        expect(article_found.content).to_not eq("too short")
-      end
+    #   it "does not update" do
+    #     expect(article_found.content).to_not eq("too short")
+    #   end
 
-      it "renders the form again" do
-        expect(response).to render_template(:edit)
-      end
-    end
+    #   it "renders the form again" do
+    #     expect(response).to render_template(:edit)
+    #   end
+    # end
   end
 
 end
