@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-  en
+  end
 
   def update
     if @post.update(post_params)
