@@ -7,9 +7,14 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    @author = Author.create!(author_params)
-
-    redirect_to author_path(@author)
+    @author = Author.new(author_params)
+    #remember when you use @author.save then this asks like the valid?, otherwise it would not save
+      if @author.save
+        redirect_to author_path(@author)
+      else
+        # re-render the :new template WITHOUT throwing away the invalid @author
+        render :new
+    end 
   end
 
   private
