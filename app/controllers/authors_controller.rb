@@ -7,9 +7,20 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    @author = Author.create!(author_params)
+    @author = Author.new(author_params)
 
-    redirect_to author_path(@author)
+    if @author.valid?
+
+      @author.save
+      redirect_to author_path(@author)
+
+    else
+      # If the post is invalid, hold on to @post, because it is now full of
+      # useful error messages, and re-render the :new page, which knows how
+      # to display them alongside the user's entries.
+      render :new
+    end
+
   end
 
   private
