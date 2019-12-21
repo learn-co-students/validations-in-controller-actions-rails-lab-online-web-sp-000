@@ -7,7 +7,7 @@ The goal of this lab is to allow users of this blog-style application to create 
 For example, if someone creates a blog post with less than 100 characters of content, it's likely that they accidentally pasted the wrong text, or misunderstood which information goes into which field. We can improve the user's experience and the stability of our codebase by notifying users about these kinds of mistakes *before* bad data gets into the database.
 
 # Objectives
-
+#here's a comment
 - Define validations on a model
 - Use the validation state of a model in a response conditional in an action
 - Re-render a form with validation errors
