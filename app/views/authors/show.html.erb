@@ -1,2 +1,18 @@
 <h2><%= @author.name %></h2>
-<a href="mailto:<%= @author.email %>"><%= @author.email %></a>
+
+<%= if @author.errors.any? %>
+  <div id="error_explanation">
+    <h3>
+      <%= pluralize(@author.errors.count, "error") %>
+      prohibited this author from being saved:
+    </h3>
+
+    <ul>
+      <%= @author.errors.full_message.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<%= else %>
+  <a href="mailto:<%= @author.email %>"><%= @author.email %></a>
+<% end %>
