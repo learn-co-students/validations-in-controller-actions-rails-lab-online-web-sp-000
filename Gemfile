@@ -16,3 +16,6 @@ end
 
 group :development do
 end
+
+gem 'standardrb'
+gem 'htmlbeautifier'
