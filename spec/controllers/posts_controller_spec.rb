@@ -8,6 +8,7 @@ RSpec.describe PostsController do
       category: "Non-Fiction"
     }
   end
+
   let(:article_found) { Post.find(@article.id) }
 
   before do
