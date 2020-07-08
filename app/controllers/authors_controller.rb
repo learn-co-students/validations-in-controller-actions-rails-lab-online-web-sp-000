@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+ 
   def show
     @author = Author.find(params[:id])
   end
@@ -7,10 +8,16 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    @author = Author.create!(author_params)
-
-    redirect_to author_path(@author)
-  end
+    @author = Author.new(author_params)
+    if @author.valid?
+      @author.save
+      flash[:notice]="You successfully entered your information"
+      redirect_to author_path(@author)
+    else
+      flash[:error]="Invalid name or email"
+      render :new
+    end
+  end 
 
   private
 
