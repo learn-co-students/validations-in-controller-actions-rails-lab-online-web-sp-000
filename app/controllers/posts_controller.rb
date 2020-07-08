@@ -9,8 +9,13 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-
-    redirect_to post_path(@post)
+    if @post.valid? 
+      flash[:success]="Succcessfully Updated"
+      redirect_to post_path(@post)
+    elsif @post.invalid?
+      flash[:failure]="Please make a valid entry"
+      render :edit
+    end
   end
 
   private

@@ -3,3 +3,8 @@
 <p>A <%= @post.category %> post.</p>
 <hr />
 <p><%= @post.content %></p>
+
+<% if flash[:success] %>
+    <div class="notice"><%= flash[:success] %></div>
+  <% end %>
+
