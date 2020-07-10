@@ -63,6 +63,7 @@ RSpec.describe PostsController do
     end
 
     it "has an error for invalid category" do
+      binding.pry
       expect(article_bad.errors[:category]).to_not be_empty
     end
 
