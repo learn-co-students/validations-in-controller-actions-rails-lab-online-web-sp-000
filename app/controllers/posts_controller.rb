@@ -7,10 +7,12 @@ class PostsController < ApplicationController
   def edit
   end
 
-  def update
-    @post.update(post_params)
-
-    redirect_to post_path(@post)
+  def update #renders edit form again if params are invalid
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
   end
 
   private
