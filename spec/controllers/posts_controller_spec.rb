@@ -22,7 +22,7 @@ RSpec.describe PostsController do
   end
 
   describe "making valid updates" do
-    let(:new_attributes) do
+    let(:new_attributes) do 
       attributes.merge(
         id: @article.id,
         title: "Fifteen Ways to Transcend Corporeal Form",
