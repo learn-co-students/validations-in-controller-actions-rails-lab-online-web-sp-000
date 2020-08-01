@@ -8,10 +8,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
-
+    @post.update(post_params) #new post object
+    if @post.valid? #run validations
     redirect_to post_path(@post)
+  else
+    render :edit #renders an edit form if post is invalid (missing title, content short, invalid category)
   end
+end
 
   private
 
@@ -23,3 +26,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 end
+
+# in models/post.rb
+# class Post < ActiveRecord::Base
+#  validates_presence_of :title
+#  validates :category, inclusion: { in: %w(Fiction Non-Fiction) }
+#  validates :content, length: { minimum: 100 }
+# end
