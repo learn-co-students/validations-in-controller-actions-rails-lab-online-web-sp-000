@@ -8,9 +8,10 @@ class PostsController < ApplicationController
   end
 
   def update
-    binding.pry
+    # binding.pry
     # if @post.valid?
     if @post.update(post_params)
+      # If the object is invalid, the saving will fail and false will be returned.
        redirect_to post_path(@post)
     else
       render :edit
