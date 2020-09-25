@@ -10,3 +10,9 @@
   </div>
   <%= submit_tag "Create Author" %>
 <% end %>
+
+
+<%@author.errors.messages.each do |k,v|%>
+  <p> <%= "#{k.to_s.capitalize} #{v[0]}"%>
+<% end %>
+
