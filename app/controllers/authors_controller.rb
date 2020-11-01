@@ -7,9 +7,15 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    @author = Author.create!(author_params)
-
-    redirect_to author_path(@author)
+    @author = Author.new(author_params)
+    #changed from create! to new, otherwise an invalid input will raise error and not go to the next steps in the acontroller action
+    
+    if @author.valid?
+      @author.save
+      redirect_to author_path(@author)
+    else 
+      render :new
+    end
   end
 
   private
