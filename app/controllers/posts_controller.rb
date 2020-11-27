@@ -8,9 +8,13 @@ class PostsController < ApplicationController
   end
 
   def update
+    # need to update *first* to check if updated @post value is valid
     @post.update(post_params)
-
-    redirect_to post_path(@post)
+    if @post.valid?
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
   end
 
   private
