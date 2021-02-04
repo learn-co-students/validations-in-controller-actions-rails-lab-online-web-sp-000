@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(:id)
   end
 
   def update
