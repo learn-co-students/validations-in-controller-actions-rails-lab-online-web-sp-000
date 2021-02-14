@@ -1,0 +1,17 @@
+
+[1mFrom:[0m /mnt/c/users/yndaj/dev/flatiron/labs/validations-in-controller-actions-rails-lab-online-web-sp-000/app/controllers/posts_controller.rb @ line 11 PostsController#update:
+
+    [1;34m10[0m: [32mdef[0m [1;34mupdate[0m
+ => [1;34m11[0m:   binding.pry
+    [1;34m12[0m:   post_params.each [32mdo[0m |param, value|
+    [1;34m13[0m:     @post.send(param, value)
+    [1;34m14[0m:   [32mend[0m
+    [1;34m15[0m: 
+    [1;34m16[0m:   [32mif[0m @post.valid?
+    [1;34m17[0m:     @post.save
+    [1;34m18[0m:     redirect_to post_path(@post)
+    [1;34m19[0m:   [32melse[0m
+    [1;34m20[0m:     render [33m:edit[0m
+    [1;34m21[0m:   [32mend[0m
+    [1;34m22[0m: [32mend[0m
+
